@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BT SHOP</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0b0204;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Container หลักคุมโทนแสงแดงแผ่รอบๆ */
+        .container {
+            background: #11090b;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 30px;
+            padding: 35px 20px 30px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(255, 0, 50, 0.25);
+            border: 1px solid rgba(255, 0, 50, 0.15);
+        }
+
+        /* กล่องไอคอนโลโก้หลัก */
+        .logo-box {
+            background: linear-gradient(135deg, #ff003c, #990024);
+            width: 85px;
+            height: 85px;
+            margin: 0 auto 18px;
+            border-radius: 22px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+            font-weight: 900;
+            box-shadow: 0 0 25px rgba(255, 0, 60, 0.5);
+        }
+
+        /* โลโก้ชื่อ BTSHOP แบบพรีเมียมเรืองแสง + เอฟเฟกต์แสงวิ่ง */
+        .brand-logo {
+            font-size: 36px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #ff003c 0%, #ff668c 25%, #ffffff 50%, #ff668c 75%, #ff003c 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 0, 60, 0.6));
+            margin-bottom: 3px;
+        }
+
+        /* แอนิเมชันทำให้คลื่นแสงสีขาวไหลผ่านชื่อร้าน */
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .subtitle {
+            color: #ff3366;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* กล่องเมนูฟังก์ชันต่างๆ */
+        .function-item {
+            background: #1a1113;
+            border-radius: 18px;
+            padding: 18px 20px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .function-label {
+            font-size: 16px;
+            font-weight: 500;
+            color: #f0f0f0;
+        }
+
+        .function-column {
+            background: #1a1113;
+            border-radius: 18px;
+            padding: 18px 20px;
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .dpi-input {
+            width: 100%;
+            background: #0b0204;
+            border: 1px solid rgba(255, 0, 60, 0.3);
+            border-radius: 10px;
+            padding: 12px;
+            color: #fff;
+            font-size: 15px;
+            outline: none;
+            text-align: left;
+            transition: 0.3s;
+        }
+
+        .dpi-input:focus {
+            border-color: #ff003c;
+            box-shadow: 0 0 10px rgba(255, 0, 60, 0.3);
+        }
+
+        /* สวิตช์เปิด-ปิด */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 26px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #332225;
+            transition: .3s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #ff003c;
+            box-shadow: 0 0 12px rgba(255, 0, 60, 0.8);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+
+        /* ปุ่มกดขนาดใหญ่ */
+        .activate-btn {
+            background: #ffffff;
+            color: #ff003c;
+            border: none;
+            width: 100%;
+            padding: 16px;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+            transition: 0.2s;
+        }
+
+        .activate-btn:disabled {
+            background: #555;
+            color: #aaa;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .footer-title {
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .status-online {
+            color: #00ff66;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 5px;
+        }
+
+        .status-online::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #00ff66;
+            border-radius: 50%;
+        }
+
+        .timestamp {
+            color: #665558;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- โลโก้ไอคอน -->
+    <div class="logo-box">BT</div>
+    
+    <!-- โลโก้ชื่อร้านแบบเรืองแสงวิบวับด้านบนสุด -->
+    <div class="brand-logo">BTSHOP</div>
+    <div class="subtitle">MAKE IN LAOS</div>
+
+    <!-- ฟังก์ชันระบบต่างๆ -->
+    <div class="function-item">
+        <div class="function-label">กันติดดำ</div>
+        <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <div class="function-item">
+        <div class="function-label">กันโดนแบน</div>
+        <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <div class="function-item">
+        <div class="function-label">กันรายงาน</div>
+        <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <div class="function-item">
+        <div class="function-label">บูสมือถือ</div>
+        <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <div class="function-column">
+        <div class="function-label">ปรับค่าDPI</div>
+        <input type="number" id="dpi-value" class="dpi-input" value="2000" placeholder="กรอกค่า DPI ที่ต้องการที่นี่...">
+    </div>
+
+    <div class="function-item">
+        <div class="function-label">ระบบกระสุนตรงลดแรงดีด</div>
+        <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <!-- ปุ่มบันทึก -->
+    <button class="activate-btn" id="main-btn" onclick="startLoading()">บันทึกและเริ่มเกม</button>
+
+    <!-- ส่วนท้ายแสดงสถานะ -->
+    <div class="footer-title">BT SHOP</div>
+    <div class="status-online">ONLINE</div>
+    <div class="timestamp" id="live-clock">กำลังโหลดเวลา...</div>
+</div>
+
+<script>
+    function startLoading() {
+        const btn = document.getElementById('main-btn');
+        const dpi = document.getElementById('dpi-value').value || "2000";
+        
+        btn.disabled = true;
+        btn.innerText = "กำลังบันทึกข้อมูลลงตัวเครื่อง 0%...";
+        
+        let percent = 0;
+        let interval = setInterval(() => {
+            percent += 20;
+            btn.innerText = `กำลังบันทึกข้อมูลลงตัวเครื่อง ${percent}%...`;
+            
+            if(percent >= 100) {
+                clearInterval(interval);
+                btn.innerText = "บันทึกสำเร็จ!";
+                btn.style.background = "#00ff66";
+                btn.style.color = "#000";
+                
+                setTimeout(() => {
+                    alert(`[ระบบ BT SHOP]\n\nเซ็ตค่า DPI: ${dpi} และเปิดระบบลดแรงดีดเรียบร้อยแล้ว!\n\n*เนื่องจากระบบความปลอดภัยของมือถือ โปรดกดออกจากเบราว์เซอร์แล้วเข้าเกม Free Fire ด้วยตัวเองได้เลยครับ*`);
+                    
+                    btn.disabled = false;
+                    btn.innerText = "บันทึกและเริ่มเกม";
+                    btn.style.background = "#ffffff";
+                    btn.style.color = "#ff003c";
+                }, 500);
+            }
+        }, 400);
+    }
+
+    function updateClock() {
+        const now = new Date();
+        const year = now.getFullYear() + 543;
+        const month = now.getMonth() + 1;
+        const day = now.getDate();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        document.getElementById('live-clock').innerText = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+</script>
+
+</body>
+</html>
