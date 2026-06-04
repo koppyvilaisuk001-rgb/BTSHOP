@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>BT SHOP</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:
+radial-gradient(circle at top,#ff003c33,#000),
+#000;
+overflow:hidden;
+}
+
+.card{
+width:390px;
+padding:30px;
+border-radius:35px;
+background:rgba(15,15,15,.85);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,0,60,.3);
+box-shadow:
+0 0 20px #ff003c55,
+0 0 60px #ff003c22;
+}
+
+.logo{
+width:110px;
+height:110px;
+margin:auto;
+border-radius:30px;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:38px;
+font-weight:700;
+color:white;
+background:
+linear-gradient(135deg,#ff003c,#5a0018);
+box-shadow:
+0 0 30px #ff003c,
+0 0 60px #ff003c55;
+}
+
+.title{
+text-align:center;
+color:white;
+font-size:34px;
+font-weight:700;
+margin-top:15px;
+}
+
+.subtitle{
+text-align:center;
+color:#ff2d5d;
+letter-spacing:5px;
+font-weight:600;
+margin-bottom:25px;
+}
+
+.item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#121212;
+padding:18px;
+margin-bottom:15px;
+border-radius:18px;
+border:1px solid #222;
+color:white;
+}
+
+.switch{
+position:relative;
+width:58px;
+height:30px;
+appearance:none;
+background:#333;
+border-radius:50px;
+cursor:pointer;
+transition:.3s;
+}
+
+.switch:checked{
+background:#ff003c;
+box-shadow:0 0 15px #ff003c;
+}
+
+.switch::before{
+content:'';
+position:absolute;
+width:24px;
+height:24px;
+top:3px;
+left:3px;
+border-radius:50%;
+background:white;
+transition:.3s;
+}
+
+.switch:checked::before{
+left:31px;
+}
+
+.activate{
+width:100%;
+height:60px;
+border:none;
+border-radius:20px;
+margin-top:15px;
+font-size:22px;
+font-weight:700;
+cursor:pointer;
+background:white;
+transition:.3s;
+}
+
+.activate:hover{
+transform:scale(1.03);
+box-shadow:0 0 25px white;
+}
+
+.status{
+text-align:center;
+margin-top:25px;
+}
+
+.status h3{
+color:white;
+letter-spacing:4px;
+}
+
+.online{
+margin-top:10px;
+color:#00ff73;
+font-weight:600;
+}
+
+.time{
+margin-top:8px;
+color:#aaa;
+font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="logo">BT</div>
+
+<div class="title">BT SHOP</div>
+<div class="subtitle">MAKE IN LAOS</div>
+
+<div class="item">
+<span>Premium Mode</span>
+<input type="checkbox" class="switch" checked>
+</div>
+
+<div class="item">
+<span>Security Shield</span>
+<input type="checkbox" class="switch" checked>
+</div>
+
+<div class="item">
+<span>Dark Theme</span>
+<input type="checkbox" class="switch" checked>
+</div>
+
+<div class="item">
+<span>Performance Boost</span>
+<input type="checkbox" class="switch">
+</div>
+
+<button class="activate">
+ACTIVATE PROTECTION
+</button>
+
+<div class="status">
+<h3>BT SHOP</h3>
+<div class="online">● ONLINE</div>
+<div class="time" id="clock"></div>
+</div>
+
+</div>
+
+<script>
+function updateClock(){
+const now = new Date();
+document.getElementById('clock').innerHTML =
+now.toLocaleString();
+}
+setInterval(updateClock,1000);
+updateClock();
+</script>
+
+</body>
+</html>
